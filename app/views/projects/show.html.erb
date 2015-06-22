@@ -1,0 +1,27 @@
+<h1><%= @project.name %></h1>
+
+<p>Company:<%= @project.company.name %></p>
+<p>Default Rate:<%= @project.default_rate %></p>
+<p>Slug: <%= @project.slug %></p>
+
+<%= link_to 'Edit Project', edit_project_path(@project) %>
+
+<%if @project.works.size > 0%>
+<table>
+	<tbody>
+		<tr>
+			<th>View</th>
+			<th>User</th>
+			<th>Project</th>
+			<th>Date/Time</th>
+			<th>Hours</th>
+		</tr>
+		<%= render partial: "works/work" , collection: @project.works %>
+	</tbody>
+</table>
+<% else %>
+<p>No Work</p>
+<% end %>
+<% content_for :aside do%>
+	<% render 'sidebar'  %>
+<% end %>
